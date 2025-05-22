@@ -1,0 +1,21 @@
+# Use Node.js as the base image
+FROM node:18-alpine
+
+# Set working directory in the container
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Disable npm SSL verification and then install dependencies
+RUN npm config set strict-ssl false && \
+    npm install
+
+# Copy all backend files
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 5000
+
+# Command to run the application
+CMD ["npm", "start"]

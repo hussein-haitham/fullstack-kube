@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-backend
+  labels:
+    app: app-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-backend
+  template:
+    metadata:
+      labels:
+        app: app-backend
+    spec:
+      containers:
+      - name: app-backend
+        image: docker.io/husseinhaitham/app-backend-mongo:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI
+          value: mongodb://mongo:27017/hussdb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-backend-service
+spec:
+  selector:
+    app: app-backend
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
