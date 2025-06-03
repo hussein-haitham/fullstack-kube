@@ -12,7 +12,7 @@ function App() {
   const [error, setError] = useState(null);
 
   // Get the API URL from environment variable or default to localhost
-  const API_URL = "http://localhost:5000";
+  const API_URL = "http://localhost:3000";
 
   // Fetch the original hello endpoint
   useEffect(() => {
