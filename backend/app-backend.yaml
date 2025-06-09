@@ -22,7 +22,7 @@ spec:
         - containerPort: 5000
         env:
         - name: MONGO_URI
-          value: mongodb://mongo:27017/hussdb
+          value: mongodb://mongo-service:27017/hussdb
 ---
 apiVersion: v1
 kind: Service
