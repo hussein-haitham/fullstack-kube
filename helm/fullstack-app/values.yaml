@@ -40,4 +40,8 @@ frontend:
     path: /
     pathType: Prefix
     className: nginx
+    service:
+      name: app-frontend-service
+      port: 80
+      targetPort: 8080
   replicas: 1
