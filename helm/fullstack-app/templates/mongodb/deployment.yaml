@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: {{ .Values.mongodb.labels.app }}
+spec:
+  replicas: {{ .Values.mongodb.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.mongodb.labels.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mongodb.labels.app }}
+    spec:
+      containers:
+      - name: mongo
+        image: {{ .Values.mongodb.image }}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: {{ .Values.mongodb.service.targetPort }}
+        
+    

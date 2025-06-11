@@ -1,0 +1,43 @@
+# MongoDB Configuration
+mongodb:
+  image: mongo:8.0
+  service:
+    port: 27017
+    targetPort: 27017
+  persistence:
+    enabled: true
+    size: 1Gi
+  labels:
+    app: mongo
+    environment: production
+  replicas: 1
+
+# Backend Configuration
+backend:
+  image: docker.io/husseinhaitham/app-backend-mongo:latest
+  service:
+    port: 3000
+    targetPort: 3000
+  env:
+    MONGO_URI: mongodb://mongo-service:27017/hussdb
+  labels:
+    app: app-backend
+    environment: production
+  replicas: 1
+
+# Frontend Configuration
+frontend:
+  image: docker.io/husseinhaitham/app-frontend-nginx:latest
+  labels:
+    app: app-frontend
+    environment: production
+  service:
+    port: 80
+    targetPort: 8080
+  ingress:
+    enabled: true
+    host: myapp.local
+    path: /
+    pathType: Prefix
+    className: nginx
+  replicas: 1
