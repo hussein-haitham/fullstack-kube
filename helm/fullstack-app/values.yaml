@@ -24,6 +24,12 @@ backend:
     app: app-backend
     environment: production
   replicas: 1
+  ingress:
+    enabled: true
+    host: api.backend.com
+    path: /
+    pathType: Prefix
+    className: nginx
 
 # Frontend Configuration
 frontend:
