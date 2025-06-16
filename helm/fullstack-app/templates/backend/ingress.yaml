@@ -17,4 +17,4 @@ spec:
           service:
             name: app-backend-service
             port:
-              number: {{ .Values.backend.service.port }}
+              number: {{ .Values.backend.ingress.service.port }}

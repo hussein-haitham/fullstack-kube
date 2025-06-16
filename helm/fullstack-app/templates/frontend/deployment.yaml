@@ -19,4 +19,7 @@ spec:
         image: {{ .Values.frontend.image }}
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: {{ .Values.frontend.service.targetPort }} 
+        - containerPort: {{ .Values.frontend.service.targetPort }}
+        env:
+        - name: API_URL
+          value: {{ .Values.frontend.env.apiUrl }} 

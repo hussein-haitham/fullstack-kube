@@ -15,4 +15,4 @@ spec:
           service:
             name: app-frontend-service
             port:
-              number: {{ .Values.frontend.service.port }} 
+              number: {{ .Values.frontend.ingress.service.port }} 

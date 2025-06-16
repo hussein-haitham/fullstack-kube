@@ -26,10 +26,13 @@ backend:
   replicas: 1
   ingress:
     enabled: true
-    host: api.backend.com
+    host: api.backend.local
     path: /
     pathType: Prefix
     className: nginx
+    service:
+      name: app-backend-service
+      port: 3000
 
 # Frontend Configuration
 frontend:
@@ -40,6 +43,8 @@ frontend:
   service:
     port: 80
     targetPort: 8080
+  env:
+    REACT_APP_API_URL: http://api.backend.local
   ingress:
     enabled: true
     host: myapp.local
