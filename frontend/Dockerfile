@@ -6,6 +6,8 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+ENV REACT_APP_API_URL=http://api.backend.local
+
 # Production stage
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html

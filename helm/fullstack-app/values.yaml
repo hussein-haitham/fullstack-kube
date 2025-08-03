@@ -12,7 +12,7 @@ mongodb:
     environment: production
   replicas: 1
 
-# Backend Configuration
+# Backend Configurationi
 backend:
   image: docker.io/husseinhaitham/app-backend-mongo:latest
   service:
@@ -47,7 +47,7 @@ frontend:
     REACT_APP_API_URL: http://api.backend.local
   ingress:
     enabled: true
-    host: myapp.local
+    host: localhost
     path: /
     pathType: Prefix
     className: nginx
